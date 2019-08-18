@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using OpenDominion.Engine.Types;
 
 namespace OpenDominion.Engine.Models
@@ -15,8 +15,8 @@ namespace OpenDominion.Engine.Models
         {
             Offensive,
             Defensive,
+            Hybrid,
             Support,
-            Mixed,
             Other
         }
 
