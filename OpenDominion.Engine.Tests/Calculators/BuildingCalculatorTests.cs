@@ -31,23 +31,27 @@ namespace OpenDominion.Engine.Tests.Calculators
                 yield return new TestCaseData(new Dominion()).Returns(0);
 
                 yield return new TestCaseData(new Dominion
-                {
-                    Buildings =
                     {
-                        [BuildingType.Home] = 10
-                    }
-                }).Returns(10);
+                        Buildings =
+                        {
+                            [BuildingType.Home] = 10
+                        }
+                    })
+                    .SetName("10 homes")
+                    .Returns(10);
 
                 yield return new TestCaseData(new Dominion
-                {
-                    Buildings =
                     {
-                        [BuildingType.Home] = 10,
-                        [BuildingType.Alchemy] = 30,
-                        [BuildingType.Farm] = 30,
-                        [BuildingType.Lumberyard] = 20
-                    }
-                }).Returns(90);
+                        Buildings =
+                        {
+                            [BuildingType.Home] = 10,
+                            [BuildingType.Alchemy] = 30,
+                            [BuildingType.Farm] = 30,
+                            [BuildingType.Lumberyard] = 20
+                        }
+                    })
+                    .SetName("Starting dominion building layout")
+                    .Returns(90);
             }
         }
 
