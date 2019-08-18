@@ -1,6 +1,5 @@
 ﻿using System;
 using OpenDominion.Engine.Models;
-using OpenDominion.Engine.Types;
 
 namespace OpenDominion.Engine.Calculators
 {
