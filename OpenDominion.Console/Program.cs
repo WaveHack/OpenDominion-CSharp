@@ -23,11 +23,29 @@ namespace OpenDominion.Console
             {
                 new Unit
                 {
+                    Name = "Peasant",
+                    Race = race,
+                    Rank = Unit.UnitRank.Generic,
+                    Class = Unit.UnitClass.Other
+                },
+                new Unit
+                {
+                    Name = "Draftee",
+                    Race = race,
+                    Rank = Unit.UnitRank.Specialist,
+                    Class = Unit.UnitClass.Other,
+                    BasePower =
+                    {
+                        [PowerType.CombatDefensive] = 1
+                    }
+                },
+                new Unit
+                {
                     Name = "Spearman",
                     Race = race,
                     Slot = 1,
                     Rank = Unit.UnitRank.Specialist,
-                    Type = Unit.UnitType.Offensive,
+                    Class = Unit.UnitClass.Offensive,
                     BaseCost =
                     {
                         [ResourceType.Platinum] = 275,
@@ -35,7 +53,7 @@ namespace OpenDominion.Console
                     },
                     BasePower =
                     {
-                        [PowerType.Offensive] = 3
+                        [PowerType.CombatOffensive] = 3
                     }
                 },
                 new Unit
@@ -44,7 +62,7 @@ namespace OpenDominion.Console
                     Race = race,
                     Slot = 2,
                     Rank = Unit.UnitRank.Specialist,
-                    Type = Unit.UnitType.Defensive,
+                    Class = Unit.UnitClass.Defensive,
                     BaseCost =
                     {
                         [ResourceType.Platinum] = 275,
@@ -52,7 +70,7 @@ namespace OpenDominion.Console
                     },
                     BasePower =
                     {
-                        [PowerType.Defensive] = 3
+                        [PowerType.CombatDefensive] = 3
                     }
                 },
                 new Unit
@@ -60,7 +78,7 @@ namespace OpenDominion.Console
                     Name = "Knight",
                     Slot = 3,
                     Rank = Unit.UnitRank.Elite,
-                    Type = Unit.UnitType.Defensive,
+                    Class = Unit.UnitClass.Defensive,
                     BaseCost =
                     {
                         [ResourceType.Platinum] = 1000,
@@ -68,8 +86,8 @@ namespace OpenDominion.Console
                     },
                     BasePower =
                     {
-                        [PowerType.Offensive] = 2,
-                        [PowerType.Defensive] = 6
+                        [PowerType.CombatOffensive] = 2,
+                        [PowerType.CombatDefensive] = 6
                     }
                 },
                 new Unit
@@ -77,7 +95,7 @@ namespace OpenDominion.Console
                     Name = "Cavalry",
                     Slot = 4,
                     Rank = Unit.UnitRank.Elite,
-                    Type = Unit.UnitType.Offensive,
+                    Class = Unit.UnitClass.Offensive,
                     BaseCost =
                     {
                         [ResourceType.Platinum] = 1250,
@@ -85,8 +103,51 @@ namespace OpenDominion.Console
                     },
                     BasePower =
                     {
-                        [PowerType.Offensive] = 6,
-                        [PowerType.Defensive] = 3
+                        [PowerType.CombatOffensive] = 6,
+                        [PowerType.CombatDefensive] = 3
+                    }
+                },
+                new Unit
+                {
+                    Name = "Spy",
+                    Rank = Unit.UnitRank.Specialist,
+                    Class = Unit.UnitClass.Other,
+                    BaseCost =
+                    {
+                        [ResourceType.Platinum] = 500
+                    },
+                    BasePower =
+                    {
+                        [PowerType.Spy] = 1
+                    }
+                },
+                new Unit
+                {
+                    Name = "Wizard",
+                    Rank = Unit.UnitRank.Specialist,
+                    Class = Unit.UnitClass.Other,
+                    BaseCost =
+                    {
+                        [ResourceType.Platinum] = 500
+                    },
+                    BasePower =
+                    {
+                        [PowerType.Wizard] = 1
+                    }
+                },
+                new Unit
+                {
+                    Name = "ArchMage",
+                    Rank = Unit.UnitRank.Elite,
+                    Class = Unit.UnitClass.Other,
+                    BaseCost =
+                    {
+                        [ResourceType.Platinum] = 1000,
+                        [ResourceType.Wizards] = 1
+                    },
+                    BasePower =
+                    {
+                        [PowerType.Wizard] = 2
                     }
                 }
             });
@@ -117,14 +178,16 @@ namespace OpenDominion.Console
                 },
                 Units =
                 {
-                    [units.First(unit => unit.Slot == 2)] = 150,
+                    [units.First(unit => unit.Name == "Peasant")] = 1300,
+                    [units.First(unit => unit.Name == "Draftee")] = 100,
+                    [units.First(unit => unit.Slot == 2)] = 150
                 }
             };
 
             var networthCalculator = new NetworthCalculator();
             var networth = networthCalculator.GetNetworth(dominion);
 
-//            Debug.Assert(networth == 750m);
+//            Debug.Assert(networth == 1250m);
             System.Console.WriteLine($"Dominion networth: {networth}");
         }
     }

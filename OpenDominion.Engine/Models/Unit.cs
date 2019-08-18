@@ -5,13 +5,7 @@ namespace OpenDominion.Engine.Models
 {
     public class Unit
     {
-        public enum UnitRank
-        {
-            Specialist,
-            Elite
-        }
-
-        public enum UnitType
+        public enum UnitClass
         {
             Offensive,
             Defensive,
@@ -20,13 +14,21 @@ namespace OpenDominion.Engine.Models
             Other
         }
 
+        public enum UnitRank
+        {
+            Generic,
+            Specialist,
+            Elite
+        }
+
         public string Name;
 //        public string Description;
 
         public Race Race;
-        public int Slot;
+        public int? Slot;
+
         public UnitRank Rank;
-        public UnitType Type;
+        public UnitClass Class;
 
         public readonly Dictionary<ResourceType, int> BaseCost = new Dictionary<ResourceType, int>();
         public readonly Dictionary<PowerType, decimal> BasePower = new Dictionary<PowerType, decimal>();

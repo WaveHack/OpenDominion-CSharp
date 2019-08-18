@@ -2,7 +2,9 @@
 {
     public enum PowerType
     {
-        Offensive,
-        Defensive
+        CombatOffensive,
+        CombatDefensive,
+        Spy,
+        Wizard
     }
 }

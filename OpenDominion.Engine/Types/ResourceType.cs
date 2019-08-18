@@ -9,6 +9,7 @@
         Ore,
         Gems,
         Tech,
-        Boats
+        Boats,
+        Wizards
     }
 }
