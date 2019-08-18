@@ -12,15 +12,52 @@ namespace OpenDominion.Console
     {
         private static void Main(string[] args)
         {
-            var race = new Race
+            var race = GetRace();
+            var units = GetUnits(race);
+            race.Units = units;
+            var dominion = GetDominion(race, units);
+
+            var container = GetContainer();
+
+            var buildingCalculator = container.GetInstance<BuildingCalculator>();
+            var networthCalculator = container.GetInstance<NetworthCalculator>();
+            var landCalculator = container.GetInstance<LandCalculator>();
+
+            System.Console.WriteLine($"Dominion networth: {networthCalculator.GetNetworth(dominion)}");
+            System.Console.WriteLine($"Total land: {landCalculator.GetTotalLand(dominion)}");
+            System.Console.WriteLine($"Total buildings: {buildingCalculator.GetTotalBuildings(dominion)}");
+            System.Console.WriteLine($"Total barren land: {landCalculator.GetTotalBarrenLand(dominion)}");
+
+            container.Dispose();
+        }
+
+        private static Container GetContainer()
+        {
+            var container = new Container();
+
+            container.Register<BuildingCalculator>(Lifestyle.Singleton);
+            container.Register<LandCalculator>(Lifestyle.Singleton);
+            container.Register<NetworthCalculator>(Lifestyle.Singleton);
+
+            container.Verify();
+
+            return container;
+        }
+
+        private static Race GetRace()
+        {
+            return new Race
             {
                 Name = "Human",
                 Description = "Humie!",
                 Alignment = Alignment.Good,
                 HomeLandType = LandType.Plain,
             };
+        }
 
-            var units = new List<Unit>(new[]
+        private static List<Unit> GetUnits(Race race)
+        {
+            return new List<Unit>(new[]
             {
                 new Unit
                 {
@@ -159,10 +196,11 @@ namespace OpenDominion.Console
                     }
                 }
             });
+        }
 
-            race.Units = units;
-
-            var dominion = new Dominion
+        private static Dominion GetDominion(Race race, IReadOnlyCollection<Unit> units)
+        {
+            return new Dominion
             {
                 Name = "Je Vader",
                 RulerName = "WaveHack",
@@ -193,29 +231,6 @@ namespace OpenDominion.Console
                     [units.First(unit => unit.Name == "Wizard")] = 25
                 }
             };
-
-            var container = new Container();
-            container.Register<BuildingCalculator>(Lifestyle.Singleton);
-            container.Register<LandCalculator>(Lifestyle.Singleton);
-            container.Register<NetworthCalculator>(Lifestyle.Singleton);
-
-            container.Verify();
-
-            var buildingCalculator = container.GetInstance<BuildingCalculator>();
-            var networthCalculator = container.GetInstance<NetworthCalculator>();
-            var landCalculator = container.GetInstance<LandCalculator>();
-
-            var networth = networthCalculator.GetNetworth(dominion);
-            var totalLand = landCalculator.GetTotalLand(dominion);
-            var totalBarrenLand = landCalculator.GetTotalBarrenLand(dominion);
-            var totalBuildings = buildingCalculator.GetTotalBuildings(dominion);
-
-            System.Console.WriteLine($"Dominion networth: {networth}");
-            System.Console.WriteLine($"Total land: {totalLand}");
-            System.Console.WriteLine($"Total buildings: {totalBuildings}");
-            System.Console.WriteLine($"Total barren land: {totalBarrenLand}");
-
-            container.Dispose();
         }
     }
 }
