@@ -16,7 +16,7 @@ namespace OpenDominion.Engine.Tests.Calculators
             _sut = new BuildingCalculator();
         }
 
-        [Test]
+        [TestCase]
         public void GetTotalBuildings_Returns_TotalBuildings()
         {
             // Arrange
