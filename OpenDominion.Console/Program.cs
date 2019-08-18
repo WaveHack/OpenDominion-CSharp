@@ -117,17 +117,14 @@ namespace OpenDominion.Console
                 },
                 Units =
                 {
-                    [units.First(unit => unit.Slot == 1)] = 0,
                     [units.First(unit => unit.Slot == 2)] = 150,
-                    [units.First(unit => unit.Slot == 3)] = 0,
-                    [units.First(unit => unit.Slot == 4)] = 0,
                 }
             };
 
             var networthCalculator = new NetworthCalculator();
             var networth = networthCalculator.GetNetworth(dominion);
 
-            Debug.Assert(networth == 750m);
+//            Debug.Assert(networth == 750m);
             System.Console.WriteLine($"Dominion networth: {networth}");
         }
     }
