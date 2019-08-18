@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NUnit.Framework;
 using OpenDominion.Engine.Calculators;
 using OpenDominion.Engine.Models;
@@ -16,26 +17,38 @@ namespace OpenDominion.Engine.Tests.Calculators
             _sut = new BuildingCalculator();
         }
 
-        [Test]
-        public void GetTotalBuildings_Returns_TotalBuildings()
+        [TestCaseSource(nameof(GetTotalBuildings_Returns_TotalBuildings_TestCases))]
+        public int GetTotalBuildings_Returns_TotalBuildings(Dominion dominion)
         {
-            // Arrange
-            var dominion = new Dominion
+            return _sut.GetTotalBuildings(dominion);
+        }
+
+        private static IEnumerable<TestCaseData> GetTotalBuildings_Returns_TotalBuildings_TestCases
+        {
+            // ReSharper disable once UnusedMember.Local
+            get
             {
-                Buildings =
+                yield return new TestCaseData(new Dominion()).Returns(0);
+
+                yield return new TestCaseData(new Dominion
                 {
-                    [BuildingType.Home] = 10,
-                    [BuildingType.Alchemy] = 30,
-                    [BuildingType.Farm] = 30,
-                    [BuildingType.Lumberyard] = 20
-                }
-            };
+                    Buildings =
+                    {
+                        [BuildingType.Home] = 10
+                    }
+                }).Returns(10);
 
-            // Act
-            var totalBuildings = _sut.GetTotalBuildings(dominion);
-
-            // Assert
-            Assert.AreEqual(90, totalBuildings);
+                yield return new TestCaseData(new Dominion
+                {
+                    Buildings =
+                    {
+                        [BuildingType.Home] = 10,
+                        [BuildingType.Alchemy] = 30,
+                        [BuildingType.Farm] = 30,
+                        [BuildingType.Lumberyard] = 20
+                    }
+                }).Returns(90);
+            }
         }
     }
 }
