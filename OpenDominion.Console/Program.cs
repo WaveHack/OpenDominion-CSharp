@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using OpenDominion.Engine.Calculators;
 using OpenDominion.Engine.Models;
 using OpenDominion.Engine.Types;
@@ -116,10 +117,10 @@ namespace OpenDominion.Console
                 },
                 Units =
                 {
-                    [units[0]] = 0,
-                    [units[1]] = 150,
-                    [units[2]] = 0,
-                    [units[3]] = 0,
+                    [units.First(unit => unit.Slot == 1)] = 0,
+                    [units.First(unit => unit.Slot == 2)] = 150,
+                    [units.First(unit => unit.Slot == 3)] = 0,
+                    [units.First(unit => unit.Slot == 4)] = 0,
                 }
             };
 
