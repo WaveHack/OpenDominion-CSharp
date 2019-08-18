@@ -22,12 +22,12 @@ namespace OpenDominion.Console
             var networthCalculator = container.Resolve<NetworthCalculator>();
             var landCalculator = container.Resolve<LandCalculator>();
 
-            System.Console.WriteLine($"Dominion networth: {networthCalculator.GetNetworth(dominion)}");
+            System.Console.WriteLine($"Networth: {networthCalculator.GetNetworth(dominion)}");
+            System.Console.WriteLine();
             System.Console.WriteLine($"Total land: {landCalculator.GetTotalLand(dominion)}");
-            System.Console.WriteLine($"Total buildings: {buildingCalculator.GetTotalBuildings(dominion)}");
             System.Console.WriteLine($"Total barren land: {landCalculator.GetTotalBarrenLand(dominion)}");
-
-//            var a = buildingCalculator.GetBuildingTypesForLandType(dominion.Race, LandType.Plain);
+            System.Console.WriteLine();
+            System.Console.WriteLine($"Total buildings: {buildingCalculator.GetTotalBuildings(dominion)}");
 
             container.Dispose();
         }
