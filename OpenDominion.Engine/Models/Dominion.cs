@@ -11,6 +11,7 @@ namespace OpenDominion.Engine.Models
         public Race Race;
 
         public Dictionary<LandType, int> Land = new Dictionary<LandType, int>();
+        public Dictionary<BuildingType, int> Buildings = new Dictionary<BuildingType, int>();
 
         // relational:
         // user
