@@ -4,6 +4,7 @@ using System.Linq;
 using OpenDominion.Engine.Calculators;
 using OpenDominion.Engine.Models;
 using OpenDominion.Engine.Types;
+using SimpleInjector;
 
 namespace OpenDominion.Console
 {
@@ -193,22 +194,28 @@ namespace OpenDominion.Console
                 }
             };
 
-            var networthCalculator = new NetworthCalculator();
+            var container = new Container();
+            container.Register<BuildingCalculator>(Lifestyle.Singleton);
+            container.Register<LandCalculator>(Lifestyle.Singleton);
+            container.Register<NetworthCalculator>(Lifestyle.Singleton);
+
+            container.Verify();
+
+            var buildingCalculator = container.GetInstance<BuildingCalculator>();
+            var networthCalculator = container.GetInstance<NetworthCalculator>();
+            var landCalculator = container.GetInstance<LandCalculator>();
+
             var networth = networthCalculator.GetNetworth(dominion);
-
-//            Debug.Assert(networth == 1000m);
-            System.Console.WriteLine($"Dominion networth: {networth}");
-
-            var buildingCalculator = new BuildingCalculator();
-            var landCalculator = new LandCalculator(buildingCalculator);
-
             var totalLand = landCalculator.GetTotalLand(dominion);
             var totalBarrenLand = landCalculator.GetTotalBarrenLand(dominion);
             var totalBuildings = buildingCalculator.GetTotalBuildings(dominion);
 
+            System.Console.WriteLine($"Dominion networth: {networth}");
             System.Console.WriteLine($"Total land: {totalLand}");
             System.Console.WriteLine($"Total buildings: {totalBuildings}");
             System.Console.WriteLine($"Total barren land: {totalBarrenLand}");
+
+            container.Dispose();
         }
     }
 }
