@@ -36,7 +36,7 @@ namespace OpenDominion.Console
                     Class = Unit.UnitClass.Other,
                     BasePower =
                     {
-                        [PowerType.CombatDefensive] = 1
+                        [Unit.UnitPowerType.CombatDefensive] = 1
                     }
                 },
                 new Unit
@@ -54,7 +54,7 @@ namespace OpenDominion.Console
                     },
                     BasePower =
                     {
-                        [PowerType.CombatOffensive] = 3
+                        [Unit.UnitPowerType.CombatOffensive] = 3
                     }
                 },
                 new Unit
@@ -72,7 +72,7 @@ namespace OpenDominion.Console
                     },
                     BasePower =
                     {
-                        [PowerType.CombatDefensive] = 3
+                        [Unit.UnitPowerType.CombatDefensive] = 3
                     }
                 },
                 new Unit
@@ -89,8 +89,8 @@ namespace OpenDominion.Console
                     },
                     BasePower =
                     {
-                        [PowerType.CombatOffensive] = 2,
-                        [PowerType.CombatDefensive] = 6
+                        [Unit.UnitPowerType.CombatOffensive] = 2,
+                        [Unit.UnitPowerType.CombatDefensive] = 6
                     }
                 },
                 new Unit
@@ -107,8 +107,8 @@ namespace OpenDominion.Console
                     },
                     BasePower =
                     {
-                        [PowerType.CombatOffensive] = 6,
-                        [PowerType.CombatDefensive] = 3
+                        [Unit.UnitPowerType.CombatOffensive] = 6,
+                        [Unit.UnitPowerType.CombatDefensive] = 3
                     }
                 },
                 new Unit
@@ -123,7 +123,7 @@ namespace OpenDominion.Console
                     },
                     BasePower =
                     {
-                        [PowerType.Spy] = 1
+                        [Unit.UnitPowerType.Spy] = 1
                     }
                 },
                 new Unit
@@ -138,7 +138,7 @@ namespace OpenDominion.Console
                     },
                     BasePower =
                     {
-                        [PowerType.Wizard] = 1
+                        [Unit.UnitPowerType.Wizard] = 1
                     }
                 },
                 new Unit
@@ -154,7 +154,7 @@ namespace OpenDominion.Console
                     },
                     BasePower =
                     {
-                        [PowerType.Wizard] = 2
+                        [Unit.UnitPowerType.Wizard] = 2
                     }
                 }
             });

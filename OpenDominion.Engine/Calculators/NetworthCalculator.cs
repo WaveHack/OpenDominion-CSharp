@@ -28,8 +28,8 @@ namespace OpenDominion.Engine.Calculators
             if (unit.NetworthOverride != null)
                 return (decimal) unit.NetworthOverride;
 
-            var op = unit.BasePower[PowerType.CombatOffensive];
-            var dp = unit.BasePower[PowerType.CombatDefensive];
+            var op = unit.BasePower[Unit.UnitPowerType.CombatOffensive];
+            var dp = unit.BasePower[Unit.UnitPowerType.CombatDefensive];
 
             return (
                 (1.8m * Math.Min(6m, Math.Max(op, dp)))

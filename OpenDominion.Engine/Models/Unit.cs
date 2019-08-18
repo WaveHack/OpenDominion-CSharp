@@ -14,6 +14,14 @@ namespace OpenDominion.Engine.Models
             Other
         }
 
+        public enum UnitPowerType
+        {
+            CombatOffensive,
+            CombatDefensive,
+            Spy,
+            Wizard
+        }
+
         public enum UnitRank
         {
             Generic,
@@ -32,7 +40,7 @@ namespace OpenDominion.Engine.Models
         public UnitClass Class;
 
         public readonly Dictionary<ResourceType, int> BaseCost = new Dictionary<ResourceType, int>();
-        public readonly Dictionary<PowerType, decimal> BasePower = new Dictionary<PowerType, decimal>();
+        public readonly Dictionary<UnitPowerType, decimal> BasePower = new Dictionary<UnitPowerType, decimal>();
 
         public bool NeedsBoat = true;
 
