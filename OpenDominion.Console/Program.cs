@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Autofac;
 using OpenDominion.Engine.Calculators;
 using OpenDominion.Engine.Models;
 using OpenDominion.Engine.Types;
-using SimpleInjector;
 
 namespace OpenDominion.Console
 {
@@ -18,9 +18,9 @@ namespace OpenDominion.Console
 
             var container = GetContainer();
 
-            var buildingCalculator = container.GetInstance<BuildingCalculator>();
-            var networthCalculator = container.GetInstance<NetworthCalculator>();
-            var landCalculator = container.GetInstance<LandCalculator>();
+            var buildingCalculator = container.Resolve<BuildingCalculator>();
+            var networthCalculator = container.Resolve<NetworthCalculator>();
+            var landCalculator = container.Resolve<LandCalculator>();
 
             System.Console.WriteLine($"Dominion networth: {networthCalculator.GetNetworth(dominion)}");
             System.Console.WriteLine($"Total land: {landCalculator.GetTotalLand(dominion)}");
@@ -30,17 +30,15 @@ namespace OpenDominion.Console
             container.Dispose();
         }
 
-        private static Container GetContainer()
+        private static IContainer GetContainer()
         {
-            var container = new Container();
+            var builder = new ContainerBuilder();
 
-            container.Register<BuildingCalculator>(Lifestyle.Singleton);
-            container.Register<LandCalculator>(Lifestyle.Singleton);
-            container.Register<NetworthCalculator>(Lifestyle.Singleton);
+            builder.RegisterType<BuildingCalculator>();
+            builder.RegisterType<LandCalculator>();
+            builder.RegisterType<NetworthCalculator>();
 
-            container.Verify();
-
-            return container;
+            return builder.Build();
         }
 
         private static Race GetRace()
