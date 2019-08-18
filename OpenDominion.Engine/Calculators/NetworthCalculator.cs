@@ -1,21 +1,34 @@
-﻿using OpenDominion.Engine.Models;
+﻿using System;
+using OpenDominion.Engine.Models;
+using OpenDominion.Engine.Types;
 
 namespace OpenDominion.Engine.Calculators
 {
     public class NetworthCalculator
     {
-//        public float GetNetworth(Realm realm)
+//        public decimal GetNetworth(Realm realm)
 //        {
+//            throw new NotImplementedException();
 //        }
 
-        public float GetNetworth(Dominion dominion)
+        public decimal GetNetworth(Dominion dominion)
         {
-            return 0;
+            throw new NotImplementedException();
         }
 
-        public float GetNetworth(Unit unit)
+        public decimal GetNetworth(Unit unit)
         {
-            return 0;
+            if (unit.Slot == 1 || unit.Slot == 2)
+                return 5m;
+
+            var op = unit.BasePower[PowerType.Offensive];
+            var dp = unit.BasePower[PowerType.Defensive];
+
+            return (
+                (1.8m * Math.Min(6m, Math.Max(op, dp)))
+                + (0.45m * Math.Min(6m, Math.Min(op, dp)))
+                + (0.2m * (Math.Max((op - 6m), 0m) + Math.Max((dp - 6m), 0m)))
+            );
         }
     }
 }
