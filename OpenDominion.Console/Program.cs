@@ -27,6 +27,8 @@ namespace OpenDominion.Console
             System.Console.WriteLine($"Total buildings: {buildingCalculator.GetTotalBuildings(dominion)}");
             System.Console.WriteLine($"Total barren land: {landCalculator.GetTotalBarrenLand(dominion)}");
 
+//            var a = buildingCalculator.GetBuildingTypesForLandType(dominion.Race, LandType.Plain);
+
             container.Dispose();
         }
 
