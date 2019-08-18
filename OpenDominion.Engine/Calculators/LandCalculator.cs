@@ -1,4 +1,5 @@
-﻿using OpenDominion.Engine.Models;
+﻿using System.Linq;
+using OpenDominion.Engine.Models;
 
 namespace OpenDominion.Engine.Calculators
 {
@@ -6,7 +7,7 @@ namespace OpenDominion.Engine.Calculators
     {
         public int GetTotalLand(Dominion dominion)
         {
-            return 0;
+            return dominion.Land.Sum(pair => pair.Value);
         }
     }
 }

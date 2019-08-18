@@ -198,6 +198,11 @@ namespace OpenDominion.Console
 
 //            Debug.Assert(networth == 1000m);
             System.Console.WriteLine($"Dominion networth: {networth}");
+
+            var landCalculator = new LandCalculator();
+            var totalLand = landCalculator.GetTotalLand(dominion);
+
+            System.Console.WriteLine($"Total land: {totalLand}");
         }
     }
 }
