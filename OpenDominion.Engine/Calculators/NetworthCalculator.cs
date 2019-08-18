@@ -25,11 +25,11 @@ namespace OpenDominion.Engine.Calculators
 
         public decimal GetNetworth(Unit unit)
         {
-            if (unit.Slot == 1 || unit.Slot == 2)
-                return 5m;
+            if (unit.NetworthOverride != null)
+                return (decimal) unit.NetworthOverride;
 
-            var op = unit.BasePower[PowerType.Offensive];
-            var dp = unit.BasePower[PowerType.Defensive];
+            var op = unit.BasePower[PowerType.CombatOffensive];
+            var dp = unit.BasePower[PowerType.CombatDefensive];
 
             return (
                 (1.8m * Math.Min(6m, Math.Max(op, dp)))

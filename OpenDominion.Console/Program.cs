@@ -24,14 +24,14 @@ namespace OpenDominion.Console
                 new Unit
                 {
                     Name = "Peasant",
-                    Race = race,
+                    NetworthOverride = 0m,
                     Rank = Unit.UnitRank.Generic,
                     Class = Unit.UnitClass.Other
                 },
                 new Unit
                 {
                     Name = "Draftee",
-                    Race = race,
+                    NetworthOverride = 0m,
                     Rank = Unit.UnitRank.Specialist,
                     Class = Unit.UnitClass.Other,
                     BasePower =
@@ -44,6 +44,7 @@ namespace OpenDominion.Console
                     Name = "Spearman",
                     Race = race,
                     Slot = 1,
+                    NetworthOverride = 5m,
                     Rank = Unit.UnitRank.Specialist,
                     Class = Unit.UnitClass.Offensive,
                     BaseCost =
@@ -61,6 +62,7 @@ namespace OpenDominion.Console
                     Name = "Archer",
                     Race = race,
                     Slot = 2,
+                    NetworthOverride = 5m,
                     Rank = Unit.UnitRank.Specialist,
                     Class = Unit.UnitClass.Defensive,
                     BaseCost =
@@ -76,6 +78,7 @@ namespace OpenDominion.Console
                 new Unit
                 {
                     Name = "Knight",
+                    Race = race,
                     Slot = 3,
                     Rank = Unit.UnitRank.Elite,
                     Class = Unit.UnitClass.Defensive,
@@ -93,6 +96,7 @@ namespace OpenDominion.Console
                 new Unit
                 {
                     Name = "Cavalry",
+                    Race = race,
                     Slot = 4,
                     Rank = Unit.UnitRank.Elite,
                     Class = Unit.UnitClass.Offensive,
@@ -110,6 +114,7 @@ namespace OpenDominion.Console
                 new Unit
                 {
                     Name = "Spy",
+                    NetworthOverride = 5m,
                     Rank = Unit.UnitRank.Specialist,
                     Class = Unit.UnitClass.Other,
                     BaseCost =
@@ -124,6 +129,7 @@ namespace OpenDominion.Console
                 new Unit
                 {
                     Name = "Wizard",
+                    NetworthOverride = 5m,
                     Rank = Unit.UnitRank.Specialist,
                     Class = Unit.UnitClass.Other,
                     BaseCost =
@@ -138,6 +144,7 @@ namespace OpenDominion.Console
                 new Unit
                 {
                     Name = "ArchMage",
+                    NetworthOverride = 5m,
                     Rank = Unit.UnitRank.Elite,
                     Class = Unit.UnitClass.Other,
                     BaseCost =
@@ -180,14 +187,16 @@ namespace OpenDominion.Console
                 {
                     [units.First(unit => unit.Name == "Peasant")] = 1300,
                     [units.First(unit => unit.Name == "Draftee")] = 100,
-                    [units.First(unit => unit.Slot == 2)] = 150
+                    [units.First(unit => unit.Slot == 2)] = 150,
+                    [units.First(unit => unit.Name == "Spy")] = 25,
+                    [units.First(unit => unit.Name == "Wizard")] = 25
                 }
             };
 
             var networthCalculator = new NetworthCalculator();
             var networth = networthCalculator.GetNetworth(dominion);
 
-//            Debug.Assert(networth == 1250m);
+//            Debug.Assert(networth == 1000m);
             System.Console.WriteLine($"Dominion networth: {networth}");
         }
     }

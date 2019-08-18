@@ -26,6 +26,7 @@ namespace OpenDominion.Engine.Models
 
         public Race Race;
         public int? Slot;
+        public decimal? NetworthOverride;
 
         public UnitRank Rank;
         public UnitClass Class;
