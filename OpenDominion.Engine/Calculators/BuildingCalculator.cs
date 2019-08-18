@@ -14,11 +14,8 @@ namespace OpenDominion.Engine.Calculators
 
         public int GetTotalBuildingsForLandType(Dominion dominion, LandType landType)
         {
-            var result = 0;
-
-            //
-
-            return result;
+            return GetBuildingTypesForLandType(dominion.Race, landType)
+                .Sum(buildingType => dominion.Buildings.GetValueOrDefault(buildingType, 0));
         }
 
         public Dictionary<BuildingType, LandType> GetBuildingTypesByLandType(Race race)
