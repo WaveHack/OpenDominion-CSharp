@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using OpenDominion.Engine.Models;
 
 namespace OpenDominion.Engine.Calculators
@@ -25,7 +25,10 @@ namespace OpenDominion.Engine.Calculators
 //                - $this->queueService->getConstructionQueueTotal($dominion)
 //            );
 
-            return 0;
+            return (
+                GetTotalLand(dominion)
+                - _buildingCalculator.GetTotalBuildings(dominion)
+            );
         }
     }
 }
