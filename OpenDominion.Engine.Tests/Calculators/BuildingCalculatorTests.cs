@@ -50,5 +50,43 @@ namespace OpenDominion.Engine.Tests.Calculators
                 }).Returns(90);
             }
         }
+
+        [TestCaseSource(nameof(GetTotalBuildingsForLandType_Returns_TotalBuildingsForLandType_TestCases))]
+        public int GetTotalBuildingsForLandType_Returns_TotalBuildingsForLandType(Dominion dominion, LandType landType)
+        {
+            return _sut.GetTotalBuildingsForLandType(dominion, landType);
+        }
+
+        private static IEnumerable<TestCaseData>
+            GetTotalBuildingsForLandType_Returns_TotalBuildingsForLandType_TestCases
+        {
+            // ReSharper disable once UnusedMember.Local
+            get
+            {
+                yield return new TestCaseData(new Dominion
+                    {
+                        Race = new Race {HomeLandType = LandType.Plain},
+                        Buildings =
+                        {
+                            [BuildingType.Home] = 10,
+                            [BuildingType.Alchemy] = 10
+                        }
+                    }, LandType.Plain)
+                    .SetName("Homes matching home land type")
+                    .Returns(20);
+
+                yield return new TestCaseData(new Dominion
+                    {
+                        Race = new Race {HomeLandType = LandType.Swamp},
+                        Buildings =
+                        {
+                            [BuildingType.Home] = 10,
+                            [BuildingType.Alchemy] = 10
+                        }
+                    }, LandType.Plain)
+                    .SetName("Homes NOT matching home land type")
+                    .Returns(10);
+            }
+        }
     }
 }
