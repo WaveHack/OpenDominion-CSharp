@@ -34,9 +34,9 @@ namespace OpenDominion.Console
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<BuildingCalculator>();
-            builder.RegisterType<LandCalculator>();
-            builder.RegisterType<NetworthCalculator>();
+            builder.RegisterType<BuildingCalculator>().SingleInstance();
+            builder.RegisterType<LandCalculator>().SingleInstance();
+            builder.RegisterType<NetworthCalculator>().SingleInstance();
 
             return builder.Build();
         }
