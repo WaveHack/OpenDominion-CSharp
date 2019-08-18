@@ -1,4 +1,5 @@
-﻿using OpenDominion.Engine.Types;
+﻿using System.Collections.Generic;
+using OpenDominion.Engine.Types;
 
 namespace OpenDominion.Engine.Models
 {
@@ -27,8 +28,8 @@ namespace OpenDominion.Engine.Models
         public UnitRank Rank;
         public UnitType Type;
 
-        public EnumArray<ResourceType, int> BaseCost = new EnumArray<ResourceType, int>();
-        public EnumArray<PowerType, decimal> BasePower = new EnumArray<PowerType, decimal>();
+        public Dictionary<ResourceType, int> BaseCost = new Dictionary<ResourceType, int>();
+        public Dictionary<PowerType, decimal> BasePower = new Dictionary<PowerType, decimal>();
 
         public bool NeedsBoat;
 

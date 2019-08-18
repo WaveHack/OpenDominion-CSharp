@@ -1,4 +1,5 @@
-﻿using OpenDominion.Engine.Types;
+﻿using System.Collections.Generic;
+using OpenDominion.Engine.Types;
 
 namespace OpenDominion.Engine.Models
 {
@@ -9,7 +10,7 @@ namespace OpenDominion.Engine.Models
 
         public Race Race;
 
-        public EnumArray<LandType, int> Land = new EnumArray<LandType, int>();
+        public Dictionary<LandType, int> Land = new Dictionary<LandType, int>();
 
         // relational:
         // user
