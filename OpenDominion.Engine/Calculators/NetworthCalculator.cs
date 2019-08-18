@@ -13,7 +13,14 @@ namespace OpenDominion.Engine.Calculators
 
         public decimal GetNetworth(Dominion dominion)
         {
-            throw new NotImplementedException();
+            decimal networth = 0;
+
+            foreach (var (unitType, amount) in dominion.Units)
+            {
+                networth += (amount * GetNetworth(unitType));
+            }
+
+            return networth;
         }
 
         public decimal GetNetworth(Unit unit)

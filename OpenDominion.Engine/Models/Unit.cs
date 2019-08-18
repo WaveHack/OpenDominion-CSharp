@@ -31,7 +31,7 @@ namespace OpenDominion.Engine.Models
         public readonly Dictionary<ResourceType, int> BaseCost = new Dictionary<ResourceType, int>();
         public readonly Dictionary<PowerType, decimal> BasePower = new Dictionary<PowerType, decimal>();
 
-        public bool NeedsBoat;
+        public bool NeedsBoat = true;
 
 //        public List<UnitPerk> UnitPerks;
     }

@@ -12,6 +12,7 @@ namespace OpenDominion.Engine.Models
 
         public Dictionary<LandType, int> Land = new Dictionary<LandType, int>();
         public Dictionary<BuildingType, int> Buildings = new Dictionary<BuildingType, int>();
+        public Dictionary<Unit, int> Units = new Dictionary<Unit, int>();
 
         // relational:
         // user
