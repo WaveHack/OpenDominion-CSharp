@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using OpenDominion.Engine.Types;
+﻿using OpenDominion.Engine.Types;
 
 namespace OpenDominion.Engine.Models
 {
@@ -9,8 +7,7 @@ namespace OpenDominion.Engine.Models
         public enum UnitRank
         {
             Specialist,
-            Elite,
-            Hero
+            Elite
         }
 
         public enum UnitType
@@ -19,7 +16,6 @@ namespace OpenDominion.Engine.Models
             Defensive,
             Support,
             Mixed,
-            Special,
             Other
         }
 
@@ -31,8 +27,8 @@ namespace OpenDominion.Engine.Models
         public UnitRank Rank;
         public UnitType Type;
 
-        public Dictionary<ResourceType, int> BaseCost;
-        public Dictionary<PowerType, float> BasePower;
+        public EnumArray<ResourceType, int> BaseCost = new EnumArray<ResourceType, int>();
+        public EnumArray<PowerType, decimal> BasePower = new EnumArray<PowerType, decimal>();
 
         public bool NeedsBoat;
 

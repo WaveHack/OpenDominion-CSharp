@@ -9,23 +9,39 @@ namespace OpenDominion.Engine.Models
 
         public Race Race;
 
+        public EnumArray<LandType, int> Land = new EnumArray<LandType, int>();
+
+        // relational:
         // user
         // round
         // realm
         // race
+        // pack
+
+        // general:
+        // name/ruler name
+        // race
         // prestige
+        // daily bonuses taken
+
+        // population:
         // peasants
         // peasants_last_hour
         // draft_rate
         // morale
         // spy/wiz str
-        // daily bonuses taken
+
         // resources
+
         // improvements
+
         // military
+
         // land
+
         // buildings
-        // stats (attack/def etc)
-        // pack
+
+        // stats (attack/def success etc)
+
     }
 }
