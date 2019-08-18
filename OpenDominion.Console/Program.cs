@@ -199,10 +199,16 @@ namespace OpenDominion.Console
 //            Debug.Assert(networth == 1000m);
             System.Console.WriteLine($"Dominion networth: {networth}");
 
-            var landCalculator = new LandCalculator();
+            var buildingCalculator = new BuildingCalculator();
+            var landCalculator = new LandCalculator(buildingCalculator);
+
             var totalLand = landCalculator.GetTotalLand(dominion);
+            var totalBarrenLand = landCalculator.GetTotalBarrenLand(dominion);
+            var totalBuildings = buildingCalculator.GetTotalBuildings(dominion);
 
             System.Console.WriteLine($"Total land: {totalLand}");
+            System.Console.WriteLine($"Total buildings: {totalBuildings}");
+            System.Console.WriteLine($"Total barren land: {totalBarrenLand}");
         }
     }
 }
