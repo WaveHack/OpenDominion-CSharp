@@ -60,7 +60,7 @@ namespace OpenDominion.Engine.Tests.Calculators
             }
         }
 
-        public class GetTotalBuildingsForLandTypeMethod_Tests : BuildingCalculator_Tests
+        public class GetTotalBuildingsForLandType_MethodTests : BuildingCalculator_Tests
         {
             [TestCaseSource(nameof(It_Returns_TotalBuildingsForLandType_TestCases))]
             public int It_Returns_TotalBuildingsForLandType(Dominion dominion, LandType landType)
