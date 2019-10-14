@@ -18,7 +18,7 @@ namespace OpenDominion.Engine.Calculators
                 .Sum(buildingType => dominion.Buildings.GetValueOrDefault(buildingType, 0));
         }
 
-        public Dictionary<BuildingType, LandType> GetBuildingTypesByLandType(Models.Race race)
+        public Dictionary<BuildingType, LandType> GetBuildingTypesByLandType(Race race)
         {
             return new Dictionary<BuildingType, LandType>
             {
@@ -51,7 +51,7 @@ namespace OpenDominion.Engine.Calculators
             };
         }
 
-        public List<BuildingType> GetBuildingTypesForLandType(Models.Race race, LandType landType)
+        public List<BuildingType> GetBuildingTypesForLandType(Race race, LandType landType)
         {
             return GetBuildingTypesByLandType(race)
                 .Where(pair => pair.Value == landType)

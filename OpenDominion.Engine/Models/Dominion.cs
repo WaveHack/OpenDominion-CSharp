@@ -45,6 +45,5 @@ namespace OpenDominion.Engine.Models
         // buildings
 
         // stats (attack/def success etc)
-
     }
 }
