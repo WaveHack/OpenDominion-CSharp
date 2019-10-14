@@ -8,24 +8,24 @@ namespace OpenDominion.Engine.Models
         public string Name;
         public string RulerName;
 
+//        public Pack Pack;
         public Race Race;
+//        public Realm Realm;
+//        public Round Round;
+//        public User User;
 
-        public Dictionary<LandType, int> Land = new Dictionary<LandType, int>();
+        public int Prestige;
+
+        public bool DailyLandTaken;
+        public bool DailyPlatinumTaken;
+
+        public Dictionary<ResourceType, int> Resources = new Dictionary<ResourceType, int>();
+
         public Dictionary<BuildingType, int> Buildings = new Dictionary<BuildingType, int>();
+        public Dictionary<LandType, int> Land = new Dictionary<LandType, int>();
         public Dictionary<Unit, int> Units = new Dictionary<Unit, int>();
 
-        // relational:
-        // user
-        // round
-        // realm
-        // race
-        // pack
-
-        // general:
-        // name/ruler name
-        // race
-        // prestige
-        // daily bonuses taken
+        public decimal Boats;
 
         // population:
         // peasants

@@ -7,7 +7,7 @@ using OpenDominion.Engine.Types;
 namespace OpenDominion.Engine.Tests.Calculators
 {
     [TestFixture]
-    public class BuildingCalculator_Tests
+    public class BuildingCalculatorTests
     {
         private BuildingCalculator _buildingCalculator;
 
@@ -17,7 +17,7 @@ namespace OpenDominion.Engine.Tests.Calculators
             _buildingCalculator = new BuildingCalculator();
         }
 
-        public class GetTotalBuildings_MethodTests : BuildingCalculator_Tests
+        public class GetTotalBuildings : BuildingCalculatorTests
         {
             [TestCaseSource(nameof(It_Returns_TotalBuildings_TestCases))]
             public int It_Returns_TotalBuildings(Dominion dominion)
@@ -54,16 +54,16 @@ namespace OpenDominion.Engine.Tests.Calculators
                                 [BuildingType.Lumberyard] = 20
                             }
                         })
-                        .SetName("Starting dominion building layout")
+                        .SetName("Starting dominion buildings")
                         .Returns(90);
                 }
             }
         }
 
-        public class GetTotalBuildingsForLandType_MethodTests : BuildingCalculator_Tests
+        public class GetTotalBuildingsForLandType : BuildingCalculatorTests
         {
             [TestCaseSource(nameof(It_Returns_TotalBuildingsForLandType_TestCases))]
-            public int It_Returns_TotalBuildingsForLandType(Dominion dominion, LandType landType)
+            public int It_Returns_TotalBuildings_ForLandType(Dominion dominion, LandType landType)
             {
                 return _buildingCalculator.GetTotalBuildingsForLandType(dominion, landType);
             }
@@ -82,7 +82,7 @@ namespace OpenDominion.Engine.Tests.Calculators
                                 [BuildingType.Alchemy] = 10
                             }
                         }, LandType.Plain)
-                        .SetName("Homes matching home land type")
+                        .SetName("10 homes 10 alchemies, homes matching home land type")
                         .Returns(20);
 
                     yield return new TestCaseData(new Dominion
@@ -94,7 +94,7 @@ namespace OpenDominion.Engine.Tests.Calculators
                                 [BuildingType.Alchemy] = 10
                             }
                         }, LandType.Plain)
-                        .SetName("Homes NOT matching home land type")
+                        .SetName("10 homes 10 alchemies, homes NOT matching home land type")
                         .Returns(10);
                 }
             }

@@ -8,8 +8,6 @@
         Mana,
         Ore,
         Gems,
-        Tech,
-        Boats,
-        Wizards
+        Tech
     }
 }

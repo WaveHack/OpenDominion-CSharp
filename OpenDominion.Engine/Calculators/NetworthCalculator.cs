@@ -1,5 +1,4 @@
-﻿using System;
-using OpenDominion.Engine.Models;
+﻿using OpenDominion.Engine.Models;
 
 namespace OpenDominion.Engine.Calculators
 {
@@ -27,14 +26,16 @@ namespace OpenDominion.Engine.Calculators
             if (unit.NetworthOverride != null)
                 return (decimal) unit.NetworthOverride;
 
-            var op = unit.BasePower[Unit.UnitPowerType.CombatOffensive];
-            var dp = unit.BasePower[Unit.UnitPowerType.CombatDefensive];
+//            var op = unit.BasePower[UnitPowerType.Offensive];
+//            var dp = unit.BasePower[UnitPowerType.Defensive];
+//
+//            return (
+//                (1.8m * Math.Min(6m, Math.Max(op, dp)))
+//                + (0.45m * Math.Min(6m, Math.Min(op, dp)))
+//                + (0.2m * (Math.Max((op - 6m), 0m) + Math.Max((dp - 6m), 0m)))
+//            );
 
-            return (
-                (1.8m * Math.Min(6m, Math.Max(op, dp)))
-                + (0.45m * Math.Min(6m, Math.Min(op, dp)))
-                + (0.2m * (Math.Max((op - 6m), 0m) + Math.Max((dp - 6m), 0m)))
-            );
+            return 0;
         }
     }
 }
